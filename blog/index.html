@@ -3,41 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Блог — Аренда компрессора Новосибирск | Молоток</title>
-  <meta name="description" content="Полезные статьи об аренде компрессоров, выборе оборудования, технике безопасности. Советы профессионалов по использованию отбойных молотков.">
-  <link rel="canonical" href="https://art009ba.github.io/molotok-nsk/blog/">
-
-  <meta property="og:title" content="Блог — Полезные статьи | Молоток Новосибирск">
-  <meta property="og:description" content="Статьи об аренде и эксплуатации компрессоров, отбойных молотков, советы по выбору.">
+  <title>Блог — Аренда компрессора в Новосибирске | Молоток</title>
+  <meta name="description" content="Полезные статьи про аренду компрессоров, отбойные молотки, строительные работы. Советы по выбору, эксплуатации и безопасности.">
+  <link rel="canonical" href="https://molotok.nsk.ru/blog/">
+  <meta property="og:title" content="Блог — Молоток | Аренда компрессора Новосибирск">
+  <meta property="og:description" content="Статьи про аренду и эксплуатацию компрессоров.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://art009ba.github.io/molotok-nsk/blog/">
-  <meta property="og:locale" content="ru_RU">
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Blog",
-    "name": "Блог компании Молоток",
-    "description": "Полезные статьи об аренде и использовании компрессоров и отбойных молотков",
-    "url": "https://art009ba.github.io/molotok-nsk/blog/"
-  }
-  </script>
-
+  <meta property="og:url" content="https://molotok.nsk.ru/blog/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="/molotok-nsk/css/style.css">
+  <style>
+    .blog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .blog-card {
+      background: var(--surface); border-radius: var(--radius);
+      padding: 32px; border: 1px solid var(--border);
+      box-shadow: var(--shadow); transition: all 0.3s;
+    }
+    .blog-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .blog-card__tag {
+      display: inline-block; padding: 4px 12px;
+      background: var(--accent-light); color: var(--accent);
+      font-size: 0.78rem; font-weight: 600;
+      border-radius: 100px; margin-bottom: 12px;
+    }
+    .blog-card h3 { margin-bottom: 8px; }
+    .blog-card h3 a { color: var(--text); transition: color 0.2s; }
+    .blog-card h3 a:hover { color: var(--accent); }
+    .blog-card p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.6; }
+    .blog-card__meta { margin-top: 16px; font-size: 0.82rem; color: var(--text-secondary); }
+    @media (max-width: 768px) { .blog-grid { grid-template-columns: 1fr; } }
+  </style>
 </head>
 <body>
-
   <header class="header">
     <div class="container header__inner">
       <a href="/molotok-nsk/" class="logo">
-        <span class="logo-icon"><i class="fas fa-hammer"></i></span>
+        <span class="logo__icon"><i class="fas fa-hammer"></i></span>
         Молоток
       </a>
-      <nav class="nav">
+      <nav class="nav" id="mainNav">
         <a href="/molotok-nsk/">Главная</a>
         <a href="/molotok-nsk/uslugi/">Услуги</a>
         <a href="/molotok-nsk/blog/">Блог</a>
@@ -48,126 +55,90 @@
     </div>
   </header>
 
-  <section class="page-hero">
-    <div class="container">
-      <h1 class="page-hero__title">Блог</h1>
-      <p class="page-hero__subtitle">Полезные статьи об аренде и эксплуатации компрессоров и отбойных молотков</p>
+  <section class="hero" style="padding-bottom:40px;">
+    <div class="container" style="text-align:center;">
+      <span class="hero__tag"><i class="fas fa-book-open"></i> Полезные материалы</span>
+      <h1>Блог</h1>
+      <p class="hero__desc" style="margin:12px auto 0;">Статьи про аренду компрессоров, отбойные молотки и строительные работы</p>
     </div>
   </section>
 
-  <div class="breadcrumbs">
-    <div class="container">
-      <a href="/molotok-nsk/">Главная</a> / <span>Блог</span>
-    </div>
-  </div>
-
-  <section class="content-section">
+  <section class="section">
     <div class="container">
       <div class="blog-grid">
-
         <article class="blog-card fade-in">
-          <div class="blog-card__image"><i class="fas fa-tools"></i></div>
-          <div class="blog-card__body">
-            <div class="blog-card__date"><i class="far fa-calendar-alt"></i> 15 марта 2025</div>
-            <h2 class="blog-card__title"><a href="/molotok-nsk/blog/posts/kak-vybrat-kompressor/">Как выбрать компрессор для строительных работ</a></h2>
-            <p class="blog-card__excerpt">Разбираем основные критерии выбора компрессора: производительность, давление, ресивер. Какой компрессор подойдёт для отбойных молотков, пескоструйки и опрессовки.</p>
-            <a href="/molotok-nsk/blog/posts/kak-vybrat-kompressor/" class="blog-card__link">Читать <i class="fas fa-arrow-right"></i></a>
-          </div>
+          <span class="blog-card__tag">Выбор оборудования</span>
+          <h3><a href="/molotok-nsk/blog/posts/kak-vybrat-kompressor/">Как выбрать компрессор для строительных работ</a></h3>
+          <p>Разбираемся в типах компрессоров, производительности, давлении и других параметрах. Что важно для стройки, а на чём можно сэкономить.</p>
+          <div class="blog-card__meta"><i class="fas fa-clock" style="color:var(--accent);"></i> 5 мин чтения</div>
         </article>
 
         <article class="blog-card fade-in">
-          <div class="blog-card__image"><i class="fas fa-scale-balanced"></i></div>
-          <div class="blog-card__body">
-            <div class="blog-card__date"><i class="far fa-calendar-alt"></i> 10 марта 2025</div>
-            <h2 class="blog-card__title"><a href="/molotok-nsk/blog/posts/arenda-ili-pokupka/">Аренда или покупка компрессора: что выгоднее</a></h2>
-            <p class="blog-card__excerpt">Сравнительный анализ затрат на аренду и покупку компрессорного оборудования. Когда выгоднее взять в аренду, а когда — купить. Реальные расчёты и примеры.</p>
-            <a href="/molotok-nsk/blog/posts/arenda-ili-pokupka/" class="blog-card__link">Читать <i class="fas fa-arrow-right"></i></a>
-          </div>
+          <span class="blog-card__tag">Советы</span>
+          <h3><a href="/molotok-nsk/blog/posts/arenda-ili-pokupka/">Аренда или покупка компрессора: что выгоднее?</a></h3>
+          <p>Сравниваем затраты на аренду и покупку компрессора. Когда имеет смысл купить, а когда аренда — единственно верное решение.</p>
+          <div class="blog-card__meta"><i class="fas fa-clock" style="color:var(--accent);"></i> 4 мин чтения</div>
         </article>
 
         <article class="blog-card fade-in">
-          <div class="blog-card__image"><i class="fas fa-gavel"></i></div>
-          <div class="blog-card__body">
-            <div class="blog-card__date"><i class="far fa-calendar-alt"></i> 5 марта 2025</div>
-            <h2 class="blog-card__title"><a href="/molotok-nsk/blog/posts/otbojnyj-molotok/">Отбойный молоток: виды и применение</a></h2>
-            <p class="blog-card__excerpt">Всё об отбойных молотках: пневматические и электрические, вес и мощность. Какой молоток выбрать для сноса стен, бетона, асфальта. Советы по эксплуатации.</p>
-            <a href="/molotok-nsk/blog/posts/otbojnyj-molotok/" class="blog-card__link">Читать <i class="fas fa-arrow-right"></i></a>
-          </div>
+          <span class="blog-card__tag">Инструмент</span>
+          <h3><a href="/molotok-nsk/blog/posts/otbojnyj-molotok/">Отбойный молоток: виды, характеристики, применение</a></h3>
+          <p>Всё про отбойные молотки: электрические и пневматические, лёгкие и тяжёлые. Какой выбрать для бетона, асфальта, кирпича.</p>
+          <div class="blog-card__meta"><i class="fas fa-clock" style="color:var(--accent);"></i> 6 мин чтения</div>
         </article>
 
         <article class="blog-card fade-in">
-          <div class="blog-card__image"><i class="fas fa-hard-hat"></i></div>
-          <div class="blog-card__body">
-            <div class="blog-card__date"><i class="far fa-calendar-alt"></i> 28 февраля 2025</div>
-            <h2 class="blog-card__title"><a href="/molotok-nsk/blog/posts/podgotovka-strojploshadki/">Как подготовить стройплощадку к работе компрессора</a></h2>
-            <p class="blog-card__excerpt">Пошаговое руководство по подготовке места для компрессора: требования к площадке, вентиляция, безопасность. Как правильно организовать работу.</p>
-            <a href="/molotok-nsk/blog/posts/podgotovka-strojploshadki/" class="blog-card__link">Читать <i class="fas fa-arrow-right"></i></a>
-          </div>
+          <span class="blog-card__tag">Подготовка</span>
+          <h3><a href="/molotok-nsk/blog/posts/podgotovka-strojploshadki/">Как подготовить стройплощадку к работе компрессора</a></h3>
+          <p>Правильная подготовка места работы — залог эффективной и безопасной эксплуатации компрессорного оборудования.</p>
+          <div class="blog-card__meta"><i class="fas fa-clock" style="color:var(--accent);"></i> 4 мин чтения</div>
         </article>
 
         <article class="blog-card fade-in">
-          <div class="blog-card__image"><i class="fas fa-shield"></i></div>
-          <div class="blog-card__body">
-            <div class="blog-card__date"><i class="far fa-calendar-alt"></i> 20 февраля 2025</div>
-            <h2 class="blog-card__title"><a href="/molotok-nsk/blog/posts/tehnika-bezopasnosti/">Техника безопасности при работе с компрессором</a></h2>
-            <p class="blog-card__excerpt">Основные правила безопасной работы с компрессором и отбойным молотком. Средства защиты, проверка оборудования, действия в нештатных ситуациях.</p>
-            <a href="/molotok-nsk/blog/posts/tehnika-bezopasnosti/" class="blog-card__link">Читать <i class="fas fa-arrow-right"></i></a>
-          </div>
+          <span class="blog-card__tag">Безопасность</span>
+          <h3><a href="/molotok-nsk/blog/posts/tehnika-bezopasnosti/">Техника безопасности при работе с компрессором</a></h3>
+          <p>Основные правила безопасной работы с компрессором и пневмоинструментом. Как избежать травм и продлить срок службы оборудования.</p>
+          <div class="blog-card__meta"><i class="fas fa-clock" style="color:var(--accent);"></i> 5 мин чтения</div>
         </article>
-
       </div>
     </div>
   </section>
 
+  <!-- CTA -->
   <section class="cta">
     <div class="container">
-      <h2 class="cta__title">Остались вопросы?</h2>
-      <p class="cta__text">Позвоните — наши специалисты подробно проконсультируют</p>
-      <a href="tel:+79137611419" class="btn btn-primary" style="font-size:1.15rem;"><i class="fas fa-phone-alt"></i> +7 (913) 761-14-19</a>
+      <h2>Есть вопросы по оборудованию?</h2>
+      <p>Позвоните — проконсультируем по любому вопросу</p>
+      <a href="tel:+79137611419" class="btn" style="background:#fff;color:var(--accent);"><i class="fas fa-phone-alt"></i> +7 (913) 761-14-19</a>
     </div>
   </section>
 
   <footer class="footer">
     <div class="container">
-      <div class="footer__grid">
+      <div class="footer__inner">
         <div>
-          <h4 class="footer__title"><i class="fas fa-hammer" style="color:var(--accent);"></i> Молоток</h4>
-          <p class="footer__text">Аренда компрессоров и отбойных молотков в Новосибирске. Надёжное оборудование, быстрая доставка, работаем 24/7.</p>
-          <div class="footer__social">
-            <a href="https://wa.me/79137611419" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            <a href="tel:+79137611419" aria-label="Телефон"><i class="fas fa-phone-alt"></i></a>
-            <a href="mailto:info@molotok.nsk.ru" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <div class="logo" style="color:#fff;margin-bottom:12px;">
+            <span class="logo__icon"><i class="fas fa-hammer"></i></span>
+            Молоток
           </div>
+          <p>Аренда компрессоров и отбойных молотков в Новосибирске. Работаем 24/7.</p>
         </div>
         <div>
-          <h4 class="footer__title">Навигация</h4>
-          <div class="footer__links">
-            <a href="/molotok-nsk/">Главная</a>
-            <a href="/molotok-nsk/uslugi/">Услуги и цены</a>
-            <a href="/molotok-nsk/blog/">Блог</a>
-            <a href="/molotok-nsk/kontakty/">Контакты</a>
-          </div>
+          <h4>Навигация</h4>
+          <a href="/molotok-nsk/">Главная</a><br>
+          <a href="/molotok-nsk/uslugi/">Услуги</a><br>
+          <a href="/molotok-nsk/blog/">Блог</a><br>
+          <a href="/molotok-nsk/kontakty/">Контакты</a>
         </div>
         <div>
-          <h4 class="footer__title">Услуги</h4>
-          <div class="footer__links">
-            <a href="/molotok-nsk/uslugi/">Аренда компрессора</a>
-            <a href="/molotok-nsk/uslugi/#opressovka">Опрессовка</a>
-            <a href="/molotok-nsk/uslugi/#peskostrujka">Пескоструйка</a>
-          </div>
-        </div>
-        <div>
-          <h4 class="footer__title">Контакты</h4>
-          <div class="footer__contact">
-            <p><i class="fas fa-phone-alt" style="color:var(--accent);"></i> <a href="tel:+79137611419">+7 (913) 761-14-19</a></p>
-            <p><i class="fas fa-envelope" style="color:var(--accent);"></i> <a href="mailto:info@molotok.nsk.ru">info@molotok.nsk.ru</a></p>
-            <p><i class="fas fa-map-marker-alt" style="color:var(--accent);"></i> г. Новосибирск</p>
-            <p><i class="fas fa-clock" style="color:var(--accent);"></i> Круглосуточно, без выходных</p>
-          </div>
+          <h4>Контакты</h4>
+          <a href="tel:+79137611419" class="footer__phone">+7 (913) 761-14-19</a><br>
+          <a href="mailto:info@molotok.nsk.ru">info@molotok.nsk.ru</a>
         </div>
       </div>
       <div class="footer__bottom">
-        <p>&copy; 2025 Молоток — аренда компрессора в Новосибирске. Все права защищены.</p>
+        <span>© 2026 Молоток — аренда компрессора в Новосибирске</span>
+        <span>Сделано в Новосибирске</span>
       </div>
     </div>
   </footer>
