@@ -91,6 +91,7 @@
         </div>
         <div class="hero__actions">
           <a href="tel:+79137611419" class="btn btn-primary"><i class="fas fa-phone-alt"></i> Позвонить</a>
+          <a href="#" class="btn btn-accent" id="openModalBtn"><i class="fas fa-pen"></i> Заказать</a>
           <a href="https://wa.me/79137611419" class="btn btn-outline" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
         </div>
       </div>
@@ -354,6 +355,28 @@
       </div>
     </div>
   </footer>
+
+  <!-- ===== MODAL ===== -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <button class="modal__close" id="modalClose">&times;</button>
+      <h3 style="margin-bottom:8px;">Заказать звонок</h3>
+      <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:24px;">Заполните форму — мы перезвоним в течение 15 минут</p>
+      <form id="orderFormModal">
+        <div style="margin-bottom:14px;">
+          <input type="text" id="formNameModal" required placeholder="Ваше имя" style="width:100%;padding:14px 16px;border:1px solid var(--border);border-radius:var(--radius-sm);font-family:var(--font);font-size:1rem;background:var(--bg);transition:border-color 0.2s;">
+        </div>
+        <div style="margin-bottom:14px;">
+          <input type="tel" id="formPhoneModal" required placeholder="+7 (___) ___-__-__" style="width:100%;padding:14px 16px;border:1px solid var(--border);border-radius:var(--radius-sm);font-family:var(--font);font-size:1rem;background:var(--bg);transition:border-color 0.2s;">
+        </div>
+        <div style="margin-bottom:20px;">
+          <textarea id="formCommentModal" rows="2" placeholder="Комментарий (необязательно)" style="width:100%;padding:14px 16px;border:1px solid var(--border);border-radius:var(--radius-sm);font-family:var(--font);font-size:1rem;resize:none;background:var(--bg);transition:border-color 0.2s;"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;font-size:1rem;padding:15px 28px;"><i class="fas fa-paper-plane"></i> Отправить</button>
+        <p class="modal__status" id="modalStatus" style="margin-top:12px;text-align:center;font-size:0.88rem;display:none;"></p>
+      </form>
+    </div>
+  </div>
 
   <!-- JS -->
   <script src="/js/main.js"></script>

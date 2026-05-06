@@ -176,3 +176,112 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 });
+
+// === Модальное окно ===
+const overlay = document.getElementById('modalOverlay');
+const openBtn = document.getElementById('openModalBtn');
+const closeBtn = document.getElementById('modalClose');
+
+if (overlay && openBtn && closeBtn) {
+  openBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('formNameModal').focus();
+  });
+
+  const closeModal = () => {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
+  });
+}
+
+// === Форма в модалке ===
+const mForm = document.getElementById('orderFormModal');
+if (mForm) {
+  const mName = document.getElementById('formNameModal');
+  const mPhone = document.getElementById('formPhoneModal');
+  const mComment = document.getElementById('formCommentModal');
+  const mStatus = document.getElementById('modalStatus');
+
+  // Маска
+  mPhone.addEventListener('input', () => {
+    let d = mPhone.value.replace(/[^\d]/g, '');
+    if (!d.length) { mPhone.value = ''; return; }
+    if (d.startsWith('7') || d.startsWith('8')) d = d.slice(1);
+    let v = '+7';
+    if (d.length > 0) v += ' (' + d.slice(0, 3);
+    if (d.length > 3) v += ') ' + d.slice(3, 6);
+    if (d.length > 6) v += '-' + d.slice(6, 8);
+    if (d.length > 8) v += '-' + d.slice(8, 10);
+    mPhone.value = v;
+  });
+
+  mForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    mStatus.style.display = 'none';
+
+    const name = mName.value.trim();
+    const phone = mPhone.value.trim();
+    const comment = mComment.value.trim();
+    const phoneDigits = phone.replace(/[^\d]/g, '');
+
+    if (!name || name.length < 2) {
+      mStatus.textContent = 'Укажите имя (минимум 2 буквы)';
+      mStatus.style.color = '#ef4444'; mStatus.style.display = 'block';
+      mName.focus(); return;
+    }
+    if (!phone || phoneDigits.length < 10 || !phone.startsWith('+7')) {
+      mStatus.textContent = 'Введите корректный номер телефона';
+      mStatus.style.color = '#ef4444'; mStatus.style.display = 'block';
+      mPhone.focus(); return;
+    }
+
+    const btn = mForm.querySelector('button[type="submit"]');
+    const orig = btn.innerHTML;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправляем…';
+    btn.disabled = true;
+
+    const esc = s => s.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    const msg = [
+      '🛠 <b>Новая заявка с molotok.nsk.ru</b>',
+      '',
+      '👤 <b>Имя:</b> ' + esc(name),
+      '📞 <b>Телефон:</b> ' + esc(phone),
+      '💬 <b>Комментарий:</b> ' + (comment ? esc(comment) : '—'),
+      '🌐 <b>Страница:</b> ' + window.location.pathname + ' (модалка)'
+    ].join('\n');
+
+    try {
+      const res = await fetch('https://api.telegram.org/bot7949630793:AAHmdOmSer6igd93mMuBu4w_w2BjIviTDLs/sendMessage', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: '-4937769961', text: msg, parse_mode: 'HTML' })
+      });
+      const data = await res.json();
+      if (data.ok) {
+        mStatus.textContent = '✅ Заявка отправлена! Мы перезвоним.';
+        mStatus.style.color = '#16a34a'; mStatus.style.display = 'block';
+        mForm.reset();
+        setTimeout(() => { overlay.classList.remove('open'); document.body.style.overflow = ''; }, 1500);
+      } else {
+        mStatus.textContent = '❌ Ошибка. Позвоните: +7 (913) 761-14-19';
+        mStatus.style.color = '#ef4444'; mStatus.style.display = 'block';
+      }
+    } catch {
+      mStatus.textContent = '❌ Ошибка. Позвоните: +7 (913) 761-14-19';
+      mStatus.style.color = '#ef4444'; mStatus.style.display = 'block';
+    }
+    btn.innerHTML = orig;
+    btn.disabled = false;
+    setTimeout(() => { mStatus.style.display = 'none'; }, 10000);
+  });
+}
