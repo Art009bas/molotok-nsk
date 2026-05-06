@@ -281,6 +281,30 @@
     </div>
   </section>
 
+  <!-- ===== ORDER FORM ===== -->
+  <section class="section" id="form">
+    <div class="container">
+      <h2 class="section-title">Оставить заявку</h2>
+      <p class="section-desc">Заполните форму — мы перезвоним в течение 15 минут</p>
+      <form id="orderForm" style="max-width:520px;margin:0 auto;background:var(--surface);padding:40px;border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);">
+        <div style="margin-bottom:16px;">
+          <label for="formName" style="display:block;font-weight:600;font-size:0.92rem;margin-bottom:6px;">Ваше имя</label>
+          <input type="text" id="formName" required placeholder="Например, Александр" style="width:100%;padding:14px 16px;border:1px solid var(--border);border-radius:var(--radius-sm);font-family:var(--font);font-size:1rem;transition:border-color 0.2s;background:var(--bg);" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor=''">
+        </div>
+        <div style="margin-bottom:16px;">
+          <label for="formPhone" style="display:block;font-weight:600;font-size:0.92rem;margin-bottom:6px;">Номер телефона</label>
+          <input type="tel" id="formPhone" required placeholder="+7 (___) ___-__-__" style="width:100%;padding:14px 16px;border:1px solid var(--border);border-radius:var(--radius-sm);font-family:var(--font);font-size:1rem;transition:border-color 0.2s;background:var(--bg);" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor=''">
+        </div>
+        <div style="margin-bottom:20px;">
+          <label for="formComment" style="display:block;font-weight:600;font-size:0.92rem;margin-bottom:6px;">Комментарий <span style="color:var(--text-secondary);font-weight:400;">(необязательно)</span></label>
+          <textarea id="formComment" rows="3" placeholder="Что нужно: компрессор, молотки, сроки, адрес..." style="width:100%;padding:14px 16px;border:1px solid var(--border);border-radius:var(--radius-sm);font-family:var(--font);font-size:1rem;resize:vertical;transition:border-color 0.2s;background:var(--bg);" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor=''"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;font-size:1.05rem;padding:16px 28px;"><i class="fas fa-paper-plane"></i> Отправить заявку</button>
+        <p id="formStatus" style="margin-top:12px;text-align:center;font-size:0.88rem;display:none;"></p>
+      </form>
+    </div>
+  </section>
+
   <!-- ===== CTA ===== -->
   <section class="cta">
     <div class="container">
