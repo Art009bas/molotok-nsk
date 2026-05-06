@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            chat_id: '476689983',
+            chat_id: '-4937769961',
             text: message,
             parse_mode: 'HTML'
           })
