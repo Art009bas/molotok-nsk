@@ -105,50 +105,58 @@
     </div>
   </section>
 
-  <!-- ===== FEATURES ===== -->
+  <!-- ===== FEATURES (ACCORDION) ===== -->
   <section class="section" id="features">
     <div class="container">
       <h2 class="section-title">Почему выбирают нас</h2>
       <p class="section-desc">Надёжное оборудование, прозрачные цены и сервис, которому доверяют</p>
-      <div class="features-grid">
-        <div class="feature-card fade-in">
-          <div class="feature-card__icon"><i class="fas fa-shield-alt"></i></div>
-          <h3>Надёжное оборудование</h3>
-          <p>Малошумные дизельные компрессоры после регулярного ТО. Запасные части всегда с собой.</p>
+      <div class="accordion" id="featuresAccordion">
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span><i class="fas fa-shield-alt" style="color:var(--accent);width:24px;"></i> Надёжное оборудование</span>
+            <i class="fas fa-chevron-down accordion-arrow"></i>
+          </div>
+          <div class="accordion-body">Малошумные дизельные компрессоры после регулярного ТО. Запасные части всегда с собой. Выезжаем только на исправной технике — никаких сюрпризов на объекте.</div>
         </div>
-        <div class="feature-card fade-in">
-          <div class="feature-card__icon"><i class="fas fa-toolbox"></i></div>
-          <h3>Полная комплектация</h3>
-          <p>4 отбойных молотка, шланги до 200 м, гайковёрты, пики, лопатки — всё необходимое в комплекте.</p>
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span><i class="fas fa-toolbox" style="color:var(--accent);width:24px;"></i> Полная комплектация</span>
+            <i class="fas fa-chevron-down accordion-arrow"></i>
+          </div>
+          <div class="accordion-body">4 отбойных молотка, шланги до 200 м, гайковёрты, пики, лопатки — всё необходимое в комплекте. Дополнительное оборудование под любую задачу.</div>
         </div>
-        <div class="feature-card fade-in">
-          <div class="feature-card__icon"><i class="fas fa-clock"></i></div>
-          <h3>Работаем 24/7</h3>
-          <p>Круглосуточно, все дни недели. Нужен компрессор ночью? Звоните — привезём.</p>
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span><i class="fas fa-clock" style="color:var(--accent);width:24px;"></i> Работаем 24/7</span>
+            <i class="fas fa-chevron-down accordion-arrow"></i>
+          </div>
+          <div class="accordion-body">
+            <p>Круглосуточно, все дни недели. Нужен компрессор ночью? Звоните — привезём.</p>
+            <img src="/images/delivery-map.jpg" alt="Доставка компрессора по Новосибирску — за 1 час" style="width:100%;max-width:400px;display:block;margin-top:10px;border-radius:12px;">
+          </div>
         </div>
-        <div class="feature-card fade-in">
-          <div class="feature-card__icon"><i class="fas fa-truck"></i></div>
-          <h3>Быстрая доставка</h3>
-          <p>В течение часа по Новосибирску. Оператор сопровождает работу компрессора на объекте.</p>
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span><i class="fas fa-truck" style="color:var(--accent);width:24px;"></i> Быстрая доставка</span>
+            <i class="fas fa-chevron-down accordion-arrow"></i>
+          </div>
+          <div class="accordion-body">В течение часа по Новосибирску. Оператор сопровождает работу компрессора на объекте. Доставка бесплатно.</div>
         </div>
-        <div class="feature-card fade-in">
-          <div class="feature-card__icon"><i class="fas fa-percent"></i></div>
-          <h3>Скидки постоянным</h3>
-          <p>Для постоянных клиентов и при заказе на длительный срок — гибкая система скидок.</p>
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span><i class="fas fa-percent" style="color:var(--accent);width:24px;"></i> Скидки постоянным</span>
+            <i class="fas fa-chevron-down accordion-arrow"></i>
+          </div>
+          <div class="accordion-body">Для постоянных клиентов и при заказе на длительный срок — гибкая система скидок. Чем дольше работаете — тем выгоднее.</div>
         </div>
-        <div class="feature-card fade-in">
-          <div class="feature-card__icon"><i class="fas fa-file-invoice"></i></div>
-          <h3>Наличный и безналичный расчёт</h3>
-          <p>Работаем с физлицами, ИП и юрлицами. Все закрывающие документы. НДС.</p>
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span><i class="fas fa-file-invoice" style="color:var(--accent);width:24px;"></i> Наличный и безналичный расчёт</span>
+            <i class="fas fa-chevron-down accordion-arrow"></i>
+          </div>
+          <div class="accordion-body">Работаем с физлицами, ИП и юрлицами. Все закрывающие документы. НДС.</div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ===== DELIVERY BANNER ===== -->
-  <section class="section" style="padding:20px 0;">
-    <div class="container" style="max-width:500px;margin:0 auto;">
-        <img src="/images/delivery-map.jpg" alt="Доставка компрессора по Новосибирску — за 1 час" style="width:100%;display:block;">
     </div>
   </section>
 

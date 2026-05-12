@@ -285,3 +285,12 @@ if (mForm) {
     setTimeout(() => { mStatus.style.display = 'none'; }, 10000);
   });
 }
+
+// === Аккордеон преимуществ ===
+function toggleAccordion(header) {
+  const item = header.parentElement;
+  const isActive = item.classList.contains('active');
+  // Закрыть все
+  document.querySelectorAll('.accordion-item.active').forEach(el => el.classList.remove('active'));
+  if (!isActive) item.classList.add('active');
+}

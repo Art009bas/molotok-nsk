@@ -239,6 +239,42 @@ h3 { font-size: 1.2rem; font-weight: 600; line-height: 1.3; }
 .feature-card h3 { margin-bottom: 8px; }
 .feature-card p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.6; }
 
+/* --- Accordion (features) --- */
+.accordion { display: flex; flex-direction: column; gap: 8px; max-width: 640px; margin: 0 auto; }
+.accordion-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.accordion-item:hover { border-color: var(--accent); }
+.accordion-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 18px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  user-select: none;
+  color: var(--text);
+}
+.accordion-header:hover { color: var(--accent); }
+.accordion-arrow { transition: transform 0.3s; font-size: 0.8rem; color: var(--text-secondary); }
+.accordion-item.active .accordion-arrow { transform: rotate(180deg); }
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+  padding: 0 18px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+.accordion-item.active .accordion-body {
+  max-height: 400px;
+  padding: 0 18px 16px;
+}
+
 /* --- Pricing --- */
 .pricing-grid {
   display: grid;
