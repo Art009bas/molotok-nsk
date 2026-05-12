@@ -307,48 +307,74 @@ h3 { font-size: 1.2rem; font-weight: 600; line-height: 1.3; }
 .blog-card__link { margin-top: 14px; color: var(--accent); font-weight: 600; font-size: 0.88rem; }
 
 /* --- Pricing --- */
-.pricing-grid {
-  display: grid;
-  gap: 12px;
-}
-
-.pricing-card {
-  display: grid;
-  grid-template-columns: 1fr 1fr auto;
-  align-items: center;
-  gap: 16px;
-  padding: 20px 24px;
+.offer-block { max-width: 480px; margin: 0 auto; }
+.offer-main {
   background: var(--surface);
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border);
-  transition: all 0.2s;
+  border: 2px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 36px 32px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 8px 30px rgba(249,115,22,0.12);
 }
-
-.pricing-card:hover {
-  border-color: var(--accent);
-  box-shadow: var(--shadow-md);
-}
-
-.pricing-card--header {
-  background: transparent;
-  border-color: transparent;
-  font-weight: 600;
-  font-size: 0.85rem;
-  color: var(--text-secondary);
+.offer-badge {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
+  padding: 5px 18px;
+  border-radius: 20px;
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
 }
-
-.pricing-card--highlight {
-  border-color: var(--accent);
-  background: var(--accent-light);
+.offer-price-wrap {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 4px;
+  margin: 24px 0 8px;
 }
-
-.pricing-card__name { font-weight: 600; }
-.pricing-card__spec { color: var(--text-secondary); font-size: 0.92rem; }
-.pricing-card__price { font-weight: 700; font-size: 1.15rem; white-space: nowrap; }
-
-.pricing-note { margin-top: 16px; color: var(--text-secondary); font-size: 0.88rem; }
+.offer-price {
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text);
+}
+.offer-currency {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+.offer-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  text-align: left;
+  display: inline-block;
+}
+.offer-list li {
+  padding: 6px 0;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+.offer-list li i { color: var(--accent); margin-right: 10px; width: 18px; text-align: center; }
+.offer-cta { margin: 24px 0 20px; }
+.offer-extras {
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+  margin-top: 8px;
+}
+.offer-extras p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  padding: 4px 0;
+}
+.offer-extras p i { color: var(--accent); width: 20px; margin-right: 6px; }
 
 /* --- Reviews --- */
 .reviews-grid {
@@ -497,12 +523,6 @@ h3 { font-size: 1.2rem; font-weight: 600; line-height: 1.3; }
   .reviews-grid {
     grid-template-columns: 1fr;
   }
-
-  .pricing-card {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
   .footer__inner {
     grid-template-columns: 1fr;
     gap: 24px;
