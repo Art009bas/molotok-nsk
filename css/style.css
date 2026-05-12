@@ -249,13 +249,13 @@ h3 { font-size: 1.2rem; font-weight: 600; line-height: 1.3; }
   .accordion::before, .accordion::after {
     content: '';
     position: absolute;
-    top: 0; bottom: 0;
-    width: 1px;
-    background: linear-gradient(to bottom, transparent, var(--accent), transparent);
-    opacity: 0.2;
+    top: -20px; bottom: -20px;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent 5%, var(--accent) 50%, transparent 95%);
+    opacity: 0.25;
   }
-  .accordion::before { left: -60px; }
-  .accordion::after  { right: -60px; }
+  .accordion::before { left: -120px; }
+  .accordion::after  { right: -120px; }
   .accordion::before { display: block; }
   .accordion::after  { display: block; }
 }
