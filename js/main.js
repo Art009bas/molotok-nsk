@@ -1,7 +1,7 @@
 //  Молоток — main.js
 //  Мобильное меню + анимации + форма заявки
 
-document.addEventListener('DOMContentLoaded', () => {
+function initMolotok() {
 
   // === Мобильное меню ===
   const toggle = document.getElementById('mobileToggle');
@@ -175,7 +175,21 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => { status.style.display = 'none'; }, 12000);
   });
 
-});
+}
+
+// Запускаем после подгрузки компонентов (хедер/футер)
+var readyState = document.readyState;
+if (readyState === 'complete' || readyState === 'interactive') {
+  // Если компоненты уже загружены через inject.js
+  document.addEventListener('components-loaded', initMolotok);
+  // fallback — через 500 мс на случай если событие уже прошло
+  setTimeout(initMolotok, 800);
+} else {
+  document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('components-loaded', initMolotok);
+    setTimeout(initMolotok, 800);
+  });
+}
 
 // === Модальное окно ===
 const overlay = document.getElementById('modalOverlay');
