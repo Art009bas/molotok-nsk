@@ -1,7 +1,7 @@
 //  Молоток — main.js
-//  Всё внутри initMolotok — вызывается inject.js после подгрузки хедера/футера
+//  Мобильное меню + анимации + форма заявки
 
-function initMolotok() {
+document.addEventListener('DOMContentLoaded', function() {
 
   // === Мобильное меню ===
   var toggle = document.getElementById('mobileToggle');
@@ -44,11 +44,11 @@ function initMolotok() {
   });
 
   // === Активная ссылка в навигации ===
+  var currentPath = window.location.pathname;
   if (nav) {
-    var currentPath = window.location.pathname;
     nav.querySelectorAll('a').forEach(function(a) {
       var linkPath = a.getAttribute('href');
-      if (currentPath === linkPath || (linkPath !== '/' && currentPath.startsWith(linkPath))) {
+      if (linkPath && (currentPath === linkPath || (linkPath !== '/' && currentPath.startsWith(linkPath)))) {
         a.style.color = 'var(--accent)';
       }
     });
@@ -82,15 +82,14 @@ function initMolotok() {
     });
   }
 
-  // === Форма заявки (основная) ===
+  // === Форма заявки ===
   var form = document.getElementById('orderForm');
   if (form) setupForm(form, 'formStatus', 'formName', 'formPhone', 'formComment', false);
 
-  // === Форма заявки (модалка) ===
   var mForm = document.getElementById('orderFormModal');
   if (mForm) setupForm(mForm, 'modalStatus', 'formNameModal', 'formPhoneModal', 'formCommentModal', true);
 
-  // === Аккордеон преимуществ ===
+  // === Аккордеон ===
   document.querySelectorAll('.accordion-header').forEach(function(hdr) {
     hdr.addEventListener('click', function() {
       var item = this.parentElement;
@@ -99,7 +98,7 @@ function initMolotok() {
       if (!isActive) item.classList.add('active');
     });
   });
-}
+});
 
 function setupForm(form, statusId, nameId, phoneId, commentId, isModal) {
   var status = document.getElementById(statusId);
@@ -108,7 +107,6 @@ function setupForm(form, statusId, nameId, phoneId, commentId, isModal) {
   var commentInput = document.getElementById(commentId);
   if (!status || !nameInput || !phoneInput) return;
 
-  // Маска телефона
   phoneInput.addEventListener('input', function() {
     var d = phoneInput.value.replace(/[^\d]/g, '');
     if (!d.length) { phoneInput.value = ''; return; }
@@ -121,7 +119,6 @@ function setupForm(form, statusId, nameId, phoneId, commentId, isModal) {
     phoneInput.value = v;
   });
 
-  // Сброс ошибок
   [nameInput, phoneInput, commentInput].forEach(function(inp) {
     inp.addEventListener('focus', function() {
       inp.style.borderColor = '';
@@ -139,26 +136,11 @@ function setupForm(form, statusId, nameId, phoneId, commentId, isModal) {
     var comment = commentInput.value.trim();
     var phoneDigits = phone.replace(/[^\d]/g, '');
 
-    if (!name || name.length < 2) {
-      showFormError(status, nameInput, 'Укажите имя (минимум 2 буквы)');
-      nameInput.focus(); return;
-    }
-    if (name.length > 50) {
-      showFormError(status, nameInput, 'Слишком длинное имя');
-      nameInput.focus(); return;
-    }
-    if (!phone || phoneDigits.length < 10 || phoneDigits.length > 12) {
-      showFormError(status, phoneInput, 'Введите корректный номер телефона');
-      phoneInput.focus(); return;
-    }
-    if (!phone.startsWith('+7')) {
-      showFormError(status, phoneInput, 'Номер должен начинаться с +7');
-      phoneInput.focus(); return;
-    }
-    if (comment.length > 500) {
-      showFormError(status, commentInput, 'Комментарий слишком длинный (макс. 500 символов)');
-      commentInput.focus(); return;
-    }
+    if (!name || name.length < 2) { showFormError(status, nameInput, 'Укажите имя (минимум 2 буквы)'); nameInput.focus(); return; }
+    if (name.length > 50) { showFormError(status, nameInput, 'Слишком длинное имя'); nameInput.focus(); return; }
+    if (!phone || phoneDigits.length < 10 || phoneDigits.length > 12) { showFormError(status, phoneInput, 'Введите корректный номер телефона'); phoneInput.focus(); return; }
+    if (!phone.startsWith('+7')) { showFormError(status, phoneInput, 'Номер должен начинаться с +7'); phoneInput.focus(); return; }
+    if (comment.length > 500) { showFormError(status, commentInput, 'Комментарий слишком длинный (макс. 500 символов)'); commentInput.focus(); return; }
 
     var btn = form.querySelector('button[type="submit"]');
     var orig = btn.innerHTML;
@@ -182,15 +164,9 @@ function setupForm(form, statusId, nameId, phoneId, commentId, isModal) {
     }).then(function(r) { return r.json(); }).then(function(data) {
       if (data.ok) {
         status.textContent = '\u2705 Заявка отправлена! Мы перезвоним в течение 15 минут.';
-        status.style.color = '#16a34a';
-        status.style.display = 'block';
+        status.style.color = '#16a34a'; status.style.display = 'block';
         form.reset();
-        if (isModal) {
-          setTimeout(function() {
-            var ov = document.getElementById('modalOverlay');
-            if (ov) { ov.classList.remove('open'); document.body.style.overflow = ''; }
-          }, 1500);
-        }
+        if (isModal) setTimeout(function() { var ov = document.getElementById('modalOverlay'); if (ov) { ov.classList.remove('open'); document.body.style.overflow = ''; } }, 1500);
       } else {
         showFormError(status, null, '\u274C Ошибка отправки. Позвоните: +7 (913) 761-14-19');
       }
@@ -205,10 +181,7 @@ function setupForm(form, statusId, nameId, phoneId, commentId, isModal) {
 }
 
 function showFormError(status, input, msg) {
-  if (input) {
-    input.style.borderColor = '#ef4444';
-    input.style.backgroundColor = '#fef2f2';
-  }
+  if (input) { input.style.borderColor = '#ef4444'; input.style.backgroundColor = '#fef2f2'; }
   status.textContent = msg;
   status.style.color = '#ef4444';
   status.style.display = 'block';
