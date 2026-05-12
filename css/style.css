@@ -240,8 +240,25 @@ h3 { font-size: 1.2rem; font-weight: 600; line-height: 1.3; }
 .feature-card p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.6; }
 
 /* --- Accordion (features) --- */
-.accordion { display: grid; grid-template-columns: 1fr; gap: 8px; max-width: 720px; margin: 0 auto; }
-@media (min-width: 768px) { .accordion { grid-template-columns: 1fr 1fr; } }
+.accordion {
+  display: flex; flex-direction: column; gap: 8px;
+  max-width: 640px; margin: 0 auto;
+  position: relative;
+}
+@media (min-width: 900px) {
+  .accordion::before, .accordion::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--accent), transparent);
+    opacity: 0.2;
+  }
+  .accordion::before { left: -60px; }
+  .accordion::after  { right: -60px; }
+  .accordion::before { display: block; }
+  .accordion::after  { display: block; }
+}
 .accordion-item {
   background: var(--surface);
   border: 1px solid var(--border);
