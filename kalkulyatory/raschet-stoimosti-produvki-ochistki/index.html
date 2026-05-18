@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Расчёт стоимости продувки труб — Калькулятор | Молоток</title>
+  <base href="/">
+  <meta name="description" content="Калькулятор стоимости продувки трубопроводов и систем сжатым воздухом. Рассчитайте по длине, диаметру и типу сети. Продувка компрессором в Новосибирске.">
+  <link rel="canonical" href="https://www.molotok.nsk.ru/kalkulyatory/raschet-stoimosti-produvki-ochistki/">
+  <script>if(location.hostname==='molotok.nsk.ru'){location.href='https://www.molotok.nsk.ru'+location.pathname}</script>
+
+  <meta property="og:title" content="Калькулятор продувки и очистки сжатым воздухом">
+  <meta property="og:description" content="Сколько стоит продувка труб сжатым воздухом? Калькулятор по метражу и диаметру">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.molotok.nsk.ru/kalkulyatory/raschet-stoimosti-produvki-ochistki/">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="Молоток — аренда компрессора">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Калькулятор продувки и очистки сжатым воздухом",
+    "description": "Калькулятор стоимости продувки трубопроводов и систем сжатым воздухом. Рассчитайте по длине, диаметру и типу сети. Продувка компрессором в Новосибирске.",
+    "url": "https://www.molotok.nsk.ru/kalkulyatory/raschet-stoimosti-produvki-ochistki/",
+    "about": {
+      "@type": "Service",
+      "name": "Аренда компрессора в Новосибирске",
+      "provider": { "@type": "LocalBusiness", "name": "Молоток" }
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://www.molotok.nsk.ru/" },
+        { "@type": "ListItem", "position": 2, "name": "Калькуляторы", "item": "https://www.molotok.nsk.ru/kalkulyatory/" },
+        { "@type": "ListItem", "position": 3, "name": "Калькулятор продувки и очистки сжатым воздухом", "item": "https://www.molotok.nsk.ru/kalkulyatory/raschet-stoimosti-produvki-ochistki/" }
+      ]
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <style>
+    .calculator {
+      max-width: 600px; margin: 0 auto; background: var(--surface);
+      border: 1px solid var(--border); border-radius: 16px; padding: 32px;
+    }
+    .calculator .field {
+      margin-bottom: 20px;
+    }
+    .calculator label {
+      display: block; font-weight: 600; margin-bottom: 6px; font-size: 0.95rem;
+    }
+    .calculator input, .calculator select {
+      width: 100%; padding: 10px 14px; border: 1px solid var(--border);
+      border-radius: 10px; font-size: 1rem; background: var(--bg);
+      color: var(--text);
+    }
+    .calculator .result {
+      margin-top: 24px; padding: 20px; background: #fef3c7;
+      border-radius: 12px; display: none;
+    }
+    .calculator .result .price {
+      font-size: 2rem; font-weight: 800; color: var(--accent);
+    }
+    .calc-btn {
+      width: 100%; padding: 14px; background: var(--accent); color: #fff;
+      border: none; border-radius: 12px; font-size: 1.05rem; font-weight: 700;
+      cursor: pointer; transition: .15s;
+    }
+    .calc-btn:hover { background: var(--accent-hover); }
+    #calc-show:checked ~ .calc-wrapper .calculator { display: none; }
+  </style>
+</head>
+<body>
+<header class="header">
+<div class="container header__inner">
+  <a href="/" class="logo"><span class="logo__icon"><i class="fas fa-hammer"></i></span>Молоток</a>
+  <nav class="nav">
+    <a href="/">Главная</a><a href="/#pricing">Цены</a><a href="/#reviews">Отзывы</a><a href="/blog/">Блог</a><a href="/kontakty/">Контакты</a>
+  </nav>
+</div>
+</header>
+
+<section class="section"><div class="container">
+  <h1>Калькулятор продувки и очистки сжатым воздухом</h1>
+  <p class="section-desc" style="max-width:600px;margin:0 auto 40px">Тип и протяжённость трубопровода — точный расчёт продувки компрессором.</p>
+
+  <div class="calculator" id="calc">
+    <div class="field">
+      <label for="param1">Параметр 1</label>
+      <input type="number" id="param1" placeholder="Введите значение" min="0">
+    </div>
+    <div class="field">
+      <label for="param2">Параметр 2</label>
+      <input type="number" id="param2" placeholder="Введите значение" min="0">
+    </div>
+    <button class="calc-btn" onclick="calculate()">Рассчитать</button>
+    <div class="result" id="result">
+      <p>Результат:</p>
+      <p class="price" id="resultPrice">0 ₽</p>
+      <p id="resultDesc" style="color:var(--text-secondary);margin-top:8px"></p>
+    </div>
+  </div>
+</div></section>
+
+<section class="section"><div class="container" style="max-width:720px">
+  <h2>Как это работает</h2>
+  <p>Продувка сжатым воздухом — стандартная операция после монтажа или ремонта трубопроводов. Удалить воду, песок, окалину — без этого систему не запустить. Калькулятор продувки поможет прикинуть, сколько времени это займёт и во сколько обойдётся.</p>
+
+<p>Мы в «Молоток» часто выезжаем на продувку газовых и водных магистралей. Компрессор ПКСД-5,25 выдаёт достаточный объём воздуха для продувки труб до 300 мм диаметром. Если трубы больше — может понадобиться два компрессора или больше времени.</p>
+
+<h2>Факторы, влияющие на цену</h2>
+
+<p>Длина трассы — главный параметр. Чем длиннее труба, тем больше времени нужно на продувку. Диаметр — второй по важности: в трубе 100 мм помещается заметно больше мусора, чем в 50-й. Тип загрязнения тоже важен: вода выдувается быстро, песок или окалина — дольше.</p>
+
+<p>После продувки часто делают <a href="/raboty/opressovka-gazovyh-vodnyh-magistralej/">опрессовку газовых и водных магистралей</a> — это проверка системы давлением. Мы обычно совмещаем: сначала продувка, потом опрессовка. Экономия на доставке.</p>
+
+<h3>Для чего ещё пригодится</h3>
+
+<p>Компрессор для продувки — тот же, что и для <a href="/raboty/pnevmoinstrument/">пневмоинструмента</a>. Разница только в насадке и режиме работы. Если вам нужно и продуть трубы, и поработать отбойником — берите один компрессор на обе задачи, цена за час та же.</p>
+
+<p>Для сложных объектов (трубы с большим диаметром, сильное загрязнение) можем предложить вариант с предварительной <a href="/raboty/peskostrujnaya-obrabotka/">пескоструйной обработкой</a> — но это уже совсем другая история.</p>
+  
+  <h3>Ещё калькуляторы</h3>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px">
+    <a href="/kalkulyatory/raschet-stoimosti-arendy-kompressora/" class="tag-popular">💰 Аренда компрессора</a>
+    <a href="/kalkulyatory/raschet-proizvoditelnosti-kompressora/" class="tag-popular">⚡ Производительность</a>
+    <a href="/kalkulyatory/raschet-vykopa-kotlovana/" class="tag-popular">🏗️ Выемка грунта</a>
+    <a href="/kalkulyatory/raschet-vesa-gruza-dlya-perevozki/" class="tag-popular">🚛 Вес мусора</a>
+    <a href="/kalkulyatory/raschet-stoimosti-produvki-ochistki/" class="tag-popular">💨 Продувка труб</a>
+  </div>
+
+  <h3>Связанные услуги</h3>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:30px">
+<a href="/raboty/opressovka-gazovyh-vodnyh-magistralej/" class="tag-popular">→ Opressovka Gazovyh Vodnyh Magistralej</a>
+<a href="/raboty/produvka-ochistka/" class="tag-popular">→ Produvka Ochistka</a>
+<a href="/raboty/pnevmoinstrument/" class="tag-popular">→ Pnevmoinstrument</a>
+  </div>
+</div></section>
+
+<section class="cta"><div class="container">
+  <h2>Остались вопросы?</h2>
+  <p>Позвоните или напишите — мы поможем рассчитать и подобрать оборудование</p>
+  <div class="cta-buttons">
+    <a href="tel:+79137588607" class="btn btn-primary"><i class="fas fa-phone"></i> +7 (913) 758-86-07</a>
+    <a href="https://wa.me/79137588607" class="btn btn-outline"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    <a href="https://t.me/+79137588607" class="btn btn-outline"><i class="fab fa-telegram-plane"></i> Telegram</a>
+  </div>
+</div></section>
+
+<footer class="footer"><div class="container footer__inner">
+  <div class="footer__col">
+    <div class="footer__logo"><i class="fas fa-hammer"></i> Молоток</div>
+    <p style="margin-top:8px">Аренда компрессоров в Новосибирске.<br>Работаем с 2022 года.</p>
+  </div>
+  <div class="footer__col">
+    <strong>Меню</strong>
+    <a href="/">Главная</a>
+    <a href="/#pricing">Цены</a>
+    <a href="/blog/">Блог</a>
+    <a href="/raboty/demontazh-sten/">Виды работ</a>
+    <a href="/kontakty/">Контакты</a>
+    <a href="/kalkulyatory/raschet-stoimosti-arendy-kompressora/">Калькуляторы</a>
+  </div>
+  <div class="footer__col">
+    <strong>Контакты</strong>
+    <a href="tel:+79137588607"><i class="fas fa-phone"></i> +7 (913) 758-86-07</a>
+    <a href="mailto:molotok154@mail.ru"><i class="fas fa-envelope"></i> molotok154@mail.ru</a>
+    <div class="footer__socials" style="margin-top:12px;display:flex;gap:12px">
+      <a href="https://t.me/+79137588607" target="_blank"><i class="fab fa-telegram-plane" style="font-size:1.3rem"></i></a>
+      <a href="https://wa.me/79137588607" target="_blank"><i class="fab fa-whatsapp" style="font-size:1.3rem"></i></a>
+      <a href="https://invite.max.ru/..." target="_blank"><img src="/images/max-icon.svg" alt="Макс" style="width:20px;height:20px;filter:brightness(0) invert(0.7)"></a>
+    </div>
+  </div>
+  <p style="grid-column:1/-1;text-align:center;margin-top:24px;font-size:0.85rem;color:rgba(255,255,255,0.4)">© 2026 Молоток. Аренда компрессора в Новосибирске.</p>
+</div></footer>
+
+<script>
+function calculate() {
+  const p1 = parseFloat(document.getElementById('param1').value) || 0;
+  const p2 = parseFloat(document.getElementById('param2').value) || 0;
+  const result = document.getElementById('result');
+  const price = document.getElementById('resultPrice');
+  const desc = document.getElementById('resultDesc');
+  
+  // Placeholder calculation
+  const total = p1 * 1300 + p2 * 300;
+  price.textContent = Math.round(total).toLocaleString('ru-RU') + ' ₽';
+  desc.textContent = 'Примерный расчёт. Точную стоимость уточняйте по телефону.';
+  result.style.display = 'block';
+}
+</script>
+</body>
+</html>
