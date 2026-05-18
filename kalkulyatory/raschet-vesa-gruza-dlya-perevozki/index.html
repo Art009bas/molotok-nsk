@@ -5,138 +5,132 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Расчёт веса строительного мусора — Калькулятор | Молоток</title>
   <base href="/">
-  <meta name="description" content="Рассчитайте примерный вес строительного мусора после демонтажа: бетон, кирпич, железобетон. Узнайте, сколько контейнеров или рейсов нужно для вывоза.">
+  <meta name="description" content="Рассчитайте вес строительного мусора после демонтажа: бетон, кирпич, железобетон. Узнайте сколько контейнеров нужно для вывоза.">
   <link rel="canonical" href="https://www.molotok.nsk.ru/kalkulyatory/raschet-vesa-gruza-dlya-perevozki/">
   <script>if(location.hostname==='molotok.nsk.ru'){location.href='https://www.molotok.nsk.ru'+location.pathname}</script>
-
   <meta property="og:title" content="Калькулятор веса строительного мусора">
-  <meta property="og:description" content="Сколько тонн мусора останется после сноса? Онлайн-калькулятор для стройки">
-  <meta property="og:type" content="website">
+  <meta property="og:description" content="Сколько тонн мусора после сноса? Онлайн-расчёт">
+  <meta property="og:type" content="article">
   <meta property="og:url" content="https://www.molotok.nsk.ru/kalkulyatory/raschet-vesa-gruza-dlya-perevozki/">
   <meta property="og:locale" content="ru_RU">
-  <meta property="og:site_name" content="Молоток — аренда компрессора">
-
-  <script type="application/ld+json">
-  {
+  <meta property="og:site_name" content="Молоток">
+  <script type="application/ld+json">{
     "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Калькулятор веса строительного мусора",
-    "description": "Рассчитайте примерный вес строительного мусора после демонтажа: бетон, кирпич, железобетон. Узнайте, сколько контейнеров или рейсов нужно для вывоза.",
-    "url": "https://www.molotok.nsk.ru/kalkulyatory/raschet-vesa-gruza-dlya-perevozki/",
-    "about": {
-      "@type": "Service",
-      "name": "Аренда компрессора в Новосибирске",
-      "provider": { "@type": "LocalBusiness", "name": "Молоток" }
-    },
-    "breadcrumb": {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://www.molotok.nsk.ru/" },
-        { "@type": "ListItem", "position": 2, "name": "Калькуляторы", "item": "https://www.molotok.nsk.ru/kalkulyatory/" },
-        { "@type": "ListItem", "position": 3, "name": "Калькулятор веса строительного мусора", "item": "https://www.molotok.nsk.ru/kalkulyatory/raschet-vesa-gruza-dlya-perevozki/" }
-      ]
-    }
-  }
-  </script>
-
+    "@type": "Article",
+    "headline": "Калькулятор веса строительного мусора",
+    "description": "Калькулятор стоимости аренды компрессора в Новосибирске. Рассчитайте цену по часам, количеству молотков и доставке.",
+    "publisher": { "@type": "Organization", "name": "Молоток" },
+    "datePublished": "2026-05-18"
+  }</script>
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <style>
-    .calculator {
-      max-width: 600px; margin: 0 auto; background: var(--surface);
-      border: 1px solid var(--border); border-radius: 16px; padding: 32px;
+    .article { max-width: 720px; margin: 0 auto; }
+    .article h2 { margin-top: 40px; margin-bottom: 12px; font-size: 1.5rem; }
+    .article h3 { margin-top: 28px; margin-bottom: 8px; }
+    .article p, .article li { color: var(--text-secondary); line-height: 1.8; font-size: 1.02rem; margin-bottom: 12px; }
+    .article ul, .article ol { padding-left: 24px; }
+    .article a { color: var(--accent); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+    .calc-block {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+      padding: 32px; margin: 30px 0;
     }
-    .calculator .field {
-      margin-bottom: 20px;
-    }
-    .calculator label {
-      display: block; font-weight: 600; margin-bottom: 6px; font-size: 0.95rem;
-    }
-    .calculator input, .calculator select {
+    .calc-block label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 0.95rem; }
+    .calc-block input, .calc-block select {
       width: 100%; padding: 10px 14px; border: 1px solid var(--border);
       border-radius: 10px; font-size: 1rem; background: var(--bg);
-      color: var(--text);
+      color: var(--text); margin-bottom: 16px; box-sizing: border-box;
     }
-    .calculator .result {
-      margin-top: 24px; padding: 20px; background: #fef3c7;
-      border-radius: 12px; display: none;
+    .calc-block .row { display: flex; gap: 16px; flex-wrap: wrap; }
+    .calc-block .row > div { flex: 1; min-width: 140px; }
+    .calc-result {
+      margin-top: 20px; padding: 20px; background: #fef3c7; border-radius: 12px; display: none;
     }
-    .calculator .result .price {
-      font-size: 2rem; font-weight: 800; color: var(--accent);
-    }
+    .calc-result .price { font-size: 2rem; font-weight: 800; color: var(--accent); }
     .calc-btn {
       width: 100%; padding: 14px; background: var(--accent); color: #fff;
       border: none; border-radius: 12px; font-size: 1.05rem; font-weight: 700;
       cursor: pointer; transition: .15s;
     }
     .calc-btn:hover { background: var(--accent-hover); }
-    #calc-show:checked ~ .calc-wrapper .calculator { display: none; }
+    .tag-popular { display: inline-block; padding: 6px 16px; margin: 4px; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; font-size: 0.9rem; font-weight: 500; text-decoration: none; color: var(--text); transition: .15s; cursor: pointer; }
+    .tag-popular:hover { border-color: var(--accent); color: var(--accent); }
+    table.calc-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    table.calc-table th, table.calc-table td { padding: 10px 14px; border: 1px solid var(--border); text-align: left; }
+    table.calc-table th { background: var(--surface); font-weight: 700; }
   </style>
 </head>
 <body>
 <header class="header">
 <div class="container header__inner">
   <a href="/" class="logo"><span class="logo__icon"><i class="fas fa-hammer"></i></span>Молоток</a>
-  <nav class="nav">
-    <a href="/">Главная</a><a href="/#pricing">Цены</a><a href="/#reviews">Отзывы</a><a href="/blog/">Блог</a><a href="/kontakty/">Контакты</a>
+  <nav class="nav" id="mainNav">
+    <a href="/">Главная</a>
+    <a href="/#pricing">Цены</a>
+    <a href="/#reviews">Отзывы</a>
+    <a href="/kalkulyatory/">Калькуляторы</a>
+    <a href="/blog/">Блог</a>
+    <a href="/kontakty/">Контакты</a>
+    <a href="tel:+79137588607" class="header__phone"><i class="fas fa-phone-alt"></i> +7 (913) 758-86-07</a>
   </nav>
+  <button class="mobile-toggle" id="mobileToggle" aria-label="Меню"><i class="fas fa-bars"></i></button>
 </div>
 </header>
 
-<section class="section"><div class="container">
-  <h1>Калькулятор веса строительного мусора</h1>
-  <p class="section-desc" style="max-width:600px;margin:0 auto 40px">Тип материала и объём — переводим в тонны, мешки и рейсы.</p>
+<section class="section"><div class="container"><h1>Калькулятор веса строительного мусора</h1>
+<p class="section-desc" style="max-width:600px;margin:0 auto 30px">Подставьте свои параметры — получите точную цену за минуту.</p>
 
-  <div class="calculator" id="calc">
-    <div class="field">
-      <label for="param1">Параметр 1</label>
-      <input type="number" id="param1" placeholder="Введите значение" min="0">
-    </div>
-    <div class="field">
-      <label for="param2">Параметр 2</label>
-      <input type="number" id="param2" placeholder="Введите значение" min="0">
-    </div>
-    <button class="calc-btn" onclick="calculate()">Рассчитать</button>
-    <div class="result" id="result">
-      <p>Результат:</p>
-      <p class="price" id="resultPrice">0 ₽</p>
-      <p id="resultDesc" style="color:var(--text-secondary);margin-top:8px"></p>
-    </div>
+<div class="calc-block" id="calc4">
+  <div class="row">
+    <div><label for="mat">Материал</label><select id="mat">
+      <option value="2.4">Бетон (2.4 т/м³)</option>
+      <option value="1.8">Кирпич (1.8 т/м³)</option>
+      <option value="2.8">Железобетон (2.8 т/м³)</option>
+      <option value="0.7">Древесина (0.7 т/м³)</option>
+      <option value="1.6">Грунт (1.6 т/м³)</option>
+      <option value="1.2">Смешанный (1.2 т/м³)</option>
+    </select></div>
+    <div><label for="vol">Объём (м³)</label><input type="number" id="vol" value="3" min="0.1" step="0.1"></div>
   </div>
-</div></section>
-
+  <button class="calc-btn" onclick="calc4()">Рассчитать</button>
+  <div class="calc-result" id="r4">
+    <p>Вес мусора:</p>
+    <p class="price" id="r4weight">0 т</p>
+    <p id="r4trucks" style="margin-top:8px;color:var(--text-secondary)"></p>
+  </div>
+</div>
+<script>
+function calc4() {
+  const m = +document.getElementById('mat').value;
+  const v = +document.getElementById('vol').value || 0;
+  const t = m * v;
+  const trucks = t > 0 ? Math.ceil(t / 5) : 0;
+  document.getElementById('r4').style.display = 'block';
+  document.getElementById('r4weight').textContent = t.toFixed(1) + ' т';
+  document.getElementById('r4trucks').innerHTML = 'Потребуется: ~' + trucks + ' рейсов КамАЗа (5 т)<br><small>Плотность: ' + m + ' т/м³</small>';
+}
+calc4();
+</script></div></section>
 <section class="section"><div class="container" style="max-width:720px">
-  <h2>Как это работает</h2>
-  <p>После демонтажа стен, фундамента или сноса строения остаётся строительный мусор. Сколько он весит — вопрос не праздный. Нужно заказать контейнер или договориться о вывозе, а без примерного веса не прикинуть бюджет.</p>
-
-<p>Калькулятор веса строймусора считает по плотности материалов. Бетон — тяжелее кирпича, железобетон — ещё тяжелее (арматура добавляет массы). Вбиваете объём — получаете тоннаж.</p>
-
-<h2>Типичные цифры</h2>
-
-<p>Куб бетона — около 2,4 тонны. Такой же объём кирпича — 1,8 тонны. Древесина — 0,7 тонны. Если ломаете <a href="/raboty/demontazh-zbi/">демонтаж ЖБИ</a>, вес будет максимальным. Калькулятор всё это учитывает и выдаёт примерное количество контейнеров или рейсов самосвала.</p>
-
-<p>Важный момент: на вывоз мусора наша техника не рассчитана — мы даём только компрессор и отбойник. Вывозить придётся самим. Но зная вес, проще заказать контейнер или нанять машину.</p>
-
-<h3>Связь с другими услугами</h3>
-
-<p>Чаще всего мусор считают после <a href="/raboty/demontazh-sten/">демонтажа стен</a> или <a href="/raboty/demontazh-fundamenta/">демонтажа фундамента</a>. Если сначала идёт разборка — имеет смысл параллельно <a href="/raboty/peskostrujnaya-obrabotka/">пескоструйная обработка</a> для очистки металла или <a href="/raboty/pokraska-kraskopultom/">покраска краскопультом</a> нового покрытия.</p>
-  
-  <h3>Ещё калькуляторы</h3>
-  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px">
-    <a href="/kalkulyatory/raschet-stoimosti-arendy-kompressora/" class="tag-popular">💰 Аренда компрессора</a>
-    <a href="/kalkulyatory/raschet-proizvoditelnosti-kompressora/" class="tag-popular">⚡ Производительность</a>
-    <a href="/kalkulyatory/raschet-vykopa-kotlovana/" class="tag-popular">🏗️ Выемка грунта</a>
-    <a href="/kalkulyatory/raschet-vesa-gruza-dlya-perevozki/" class="tag-popular">🚛 Вес мусора</a>
-    <a href="/kalkulyatory/raschet-stoimosti-produvki-ochistki/" class="tag-popular">💨 Продувка труб</a>
-  </div>
-
-  <h3>Связанные услуги</h3>
-  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:30px">
-<a href="/raboty/demontazh-zbi/" class="tag-popular">→ Demontazh Zbi</a>
-<a href="/raboty/demontazh-sten/" class="tag-popular">→ Demontazh Sten</a>
-<a href="/raboty/demontazh-fundamenta/" class="tag-popular">→ Demontazh Fundamenta</a>
-  </div>
+<div class="article">
+<h2>Сколько весит строймусор</h2>
+<p>Калькулятор считает по плотности материалов. Бетон — тяжелее кирпича, железобетон — ещё тяжелее (арматура добавляет массы).</p>
+<table class="calc-table">
+  <tr><th>Материал</th><th>Вес 1 м³</th><th>Рейсов на 10 м³</th></tr>
+  <tr><td>Бетон</td><td>2,4 т</td><td>5 рейсов</td></tr>
+  <tr><td>Кирпич</td><td>1,8 т</td><td>4 рейса</td></tr>
+  <tr><td>Железобетон</td><td>2,8 т</td><td>6 рейсов</td></tr>
+  <tr><td>Древесина</td><td>0,7 т</td><td>2 рейса</td></tr>
+</table>
+<p>Чаще всего мусор считают после <a href="/raboty/demontazh-sten/">демонтажа стен</a> или <a href="/raboty/demontazh-fundamenta/">демонтажа фундамента</a>. Ещё: <a href="/raboty/snos-stroenij/">снос строений</a>.</p></div>/div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:30px">
+  <a href="/kalkulyatory/raschet-vesa-gruza-dlya-perevozki/" class="tag-popular">💰 Аренда компрессора</a>
+  <a href="/kalkulyatory/raschet-proizvoditelnosti-kompressora/" class="tag-popular">⚡ Производительность</a>
+  <a href="/kalkulyatory/raschet-vykopa-kotlovana/" class="tag-popular">🏗️ Выемка грунта</a>
+  <a href="/kalkulyatory/raschet-vesa-gruza-dlya-perevozki/" class="tag-popular">🚛 Вес мусора</a>
+  <a href="/kalkulyatory/raschet-stoimosti-produvki-ochistki/" class="tag-popular">💨 Продувка труб</a>
+</div>
 </div></section>
 
 <section class="cta"><div class="container">
@@ -149,47 +143,42 @@
   </div>
 </div></section>
 
-<footer class="footer"><div class="container footer__inner">
-  <div class="footer__col">
-    <div class="footer__logo"><i class="fas fa-hammer"></i> Молоток</div>
-    <p style="margin-top:8px">Аренда компрессоров в Новосибирске.<br>Работаем с 2022 года.</p>
-  </div>
-  <div class="footer__col">
-    <strong>Меню</strong>
-    <a href="/">Главная</a>
-    <a href="/#pricing">Цены</a>
-    <a href="/blog/">Блог</a>
-    <a href="/raboty/demontazh-sten/">Виды работ</a>
-    <a href="/kontakty/">Контакты</a>
-    <a href="/kalkulyatory/raschet-stoimosti-arendy-kompressora/">Калькуляторы</a>
-  </div>
-  <div class="footer__col">
-    <strong>Контакты</strong>
-    <a href="tel:+79137588607"><i class="fas fa-phone"></i> +7 (913) 758-86-07</a>
-    <a href="mailto:molotok154@mail.ru"><i class="fas fa-envelope"></i> molotok154@mail.ru</a>
-    <div class="footer__socials" style="margin-top:12px;display:flex;gap:12px">
-      <a href="https://t.me/+79137588607" target="_blank"><i class="fab fa-telegram-plane" style="font-size:1.3rem"></i></a>
-      <a href="https://wa.me/79137588607" target="_blank"><i class="fab fa-whatsapp" style="font-size:1.3rem"></i></a>
-      <a href="https://invite.max.ru/..." target="_blank"><img src="/images/max-icon.svg" alt="Макс" style="width:20px;height:20px;filter:brightness(0) invert(0.7)"></a>
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+      <div>
+        <div class="logo" style="color:#fff;margin-bottom:12px;">
+          <span class="logo__icon"><i class="fas fa-hammer"></i></span> Молоток
+        </div>
+        <p>Аренда компрессоров и отбойных молотков в Новосибирске. Работаем 24/7, доставка за 1 час.</p>
+        <div class="footer__socials">
+          <a href="https://max.ru/u/f9LHodD0cOKRjlKY_nmuI1jzGc2epLvmS0djYOiVM8IiD8LrFQxXtFqnUXY" target="_blank" rel="noopener" aria-label="Макс"><img src="/images/max-icon.svg" alt="Макс" style="width:24px;height:24px;border-radius:6px;display:block;"></a>
+          <a href="https://wa.me/79137588607" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://t.me/+79137588607" target="_blank" rel="noopener" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Навигация</h4>
+        <a href="/">Главная</a><br>
+        <a href="/#pricing">Цены</a><br>
+        <a href="/#reviews">Отзывы</a><br>
+        <a href="/blog/">Блог</a><br>
+        <a href="/kalkulyatory/">Калькуляторы</a><br>
+        <a href="/kontakty/">Контакты</a>
+      </div>
+      <div>
+        <h4>Контакты</h4>
+        <a href="tel:+79137588607" class="footer__phone">+7 (913) 758-86-07</a><br>
+        <a href="mailto:molotok154@mail.ru">molotok154@mail.ru</a><br>
+        <p style="margin-top:8px;">г. Новосибирск</p>
+        <p>Доставка по городу и области</p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 Молоток — аренда компрессора в Новосибирске</span>
+      <span>Сделано в Новосибирске</span>
     </div>
   </div>
-  <p style="grid-column:1/-1;text-align:center;margin-top:24px;font-size:0.85rem;color:rgba(255,255,255,0.4)">© 2026 Молоток. Аренда компрессора в Новосибирске.</p>
-</div></footer>
-
-<script>
-function calculate() {
-  const p1 = parseFloat(document.getElementById('param1').value) || 0;
-  const p2 = parseFloat(document.getElementById('param2').value) || 0;
-  const result = document.getElementById('result');
-  const price = document.getElementById('resultPrice');
-  const desc = document.getElementById('resultDesc');
-  
-  // Placeholder calculation
-  const total = p1 * 1300 + p2 * 300;
-  price.textContent = Math.round(total).toLocaleString('ru-RU') + ' ₽';
-  desc.textContent = 'Примерный расчёт. Точную стоимость уточняйте по телефону.';
-  result.style.display = 'block';
-}
-</script>
+</footer>
 </body>
 </html>
